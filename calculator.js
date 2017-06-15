@@ -11,46 +11,32 @@ function calculatorModule(){
   let total = 0;
 
   function load(x){
-  if(typeof x !== 'number'){
-    throw new Error("Invalid");
-  } else {
+  validate (x);
     total = x;
-    }
   return total;
     }
   function getTotal(){
     return total;
   }
   function add(x){
-    if(typeof x !== 'number'){
-    throw new Error("Invalid");
-    } else {
+   validate(x);
     total = x + total;
-    }
     return total;
   }
   function subtract(x){
-    if(typeof x !== 'number'){
-    throw new Error("Invalid");
-    } else {
+    validate(x);
     total = total - x;
-    }
+
     return total;
   }
   function multiply(x){
-    if(typeof x !== 'number'){
-    throw new Error("Invalid");
-    } else {
+    validate(x);
     total = total * x;
-    }
     return total;
   }
   function divide(x){
-    if(typeof x !== 'number'){
-    throw new Error("Invalid");
-    } else {
+    validate(x);
     total = total / x;
-    }
     return total;
   }
   function recallMemory(){
@@ -63,6 +49,11 @@ function calculatorModule(){
   function clearMemory(){
     memory = total - memory;
     return memory;
+  }
+  function validate(x){
+    if(typeof x !== 'number'){
+      throw new Error('Invalid');
+    }
   }
     return {
     load : load,
@@ -78,13 +69,6 @@ function calculatorModule(){
 
 }
 var myCalculator = calculatorModule();
-console.log(myCalculator.load(6));
-console.log(myCalculator.getTotal());
-console.log(myCalculator.add(5));
-console.log(myCalculator.subtract(2));
-console.log(myCalculator.recallMemory());
-console.log(myCalculator.saveMemory());
-console.log(myCalculator.clearMemory());
 
 
 
