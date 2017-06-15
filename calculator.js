@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /**
  * Declare a function named `calculatorModule`
  * this function will have two private variables declared inside of it.
@@ -5,6 +6,86 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
+function calculatorModule(){
+  let memory = 0;
+  let total = 0;
+
+  function load(x){
+  if(typeof x !== 'number'){
+    throw new Error("Invalid");
+  } else {
+    total = x;
+    }
+  return total;
+    }
+  function getTotal(){
+    return total;
+  }
+  function add(x){
+    if(typeof x !== 'number'){
+    throw new Error("Invalid");
+    } else {
+    total = x + total;
+    }
+    return total;
+  }
+  function subtract(x){
+    if(typeof x !== 'number'){
+    throw new Error("Invalid");
+    } else {
+    total = total - x;
+    }
+    return total;
+  }
+  function multiply(x){
+    if(typeof x !== 'number'){
+    throw new Error("Invalid");
+    } else {
+    total = total * x;
+    }
+    return total;
+  }
+  function divide(x){
+    if(typeof x !== 'number'){
+    throw new Error("Invalid");
+    } else {
+    total = total / x;
+    }
+    return total;
+  }
+  function recallMemory(){
+    return  memory;
+  }
+  function saveMemory(){
+    memory = total;
+    return memory;
+  }
+  function clearMemory(){
+    memory = total - memory;
+    return memory;
+  }
+    return {
+    load : load,
+    getTotal : getTotal,
+    add : add,
+    subtract : subtract,
+    multiply : multiply,
+    divide : divide,
+    recallMemory : recallMemory,
+    saveMemory : saveMemory,
+    clearMemory : clearMemory,
+  };
+
+}
+var myCalculator = calculatorModule();
+console.log(myCalculator.load(6));
+console.log(myCalculator.getTotal());
+console.log(myCalculator.add(5));
+console.log(myCalculator.subtract(2));
+console.log(myCalculator.recallMemory());
+console.log(myCalculator.saveMemory());
+console.log(myCalculator.clearMemory());
+
 
 
   /**
